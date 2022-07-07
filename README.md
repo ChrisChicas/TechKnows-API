@@ -1,2 +1,0 @@
-# TechKnows-API
-# Server Side
