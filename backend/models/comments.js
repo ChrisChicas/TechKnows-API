@@ -6,19 +6,10 @@ module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
     
      static associate({ User, Article }) {
-        // user
-        Comment.belongsTo(User, {
-          foreignKey: "user_id",
-          as: "comment"
-        })
-  
-        // article
-        Comment.belongsTo(Article, {
-          foreignKey: "article_id",
-          as: "articles"
-        })
+      Comment.belongsTo(User, { as: 'author', foreignKey: "author_id" })
+      Comment.belongsTo(Article, { as:'article', foreignKey: 'article_id' })
       }
-    }
+    };
   Comment.init({
     comment_id: {
       type: DataTypes.INTEGER,
@@ -30,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    user_id: {
+    author_id: {
       type:DataTypes.INTEGER,
       allowNull: false
     },

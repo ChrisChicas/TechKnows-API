@@ -1,3 +1,4 @@
+
 const express = require('express')
 const app = express();
 const { Sequelize } = require('sequelize')
@@ -22,6 +23,9 @@ app.get('/', (req, res) => {
 
 
 
+//app.use('/places', require('./controllers/places'))
+app.use('/users', require('./controllers/users'))
+//app.use('/authentication', require('./controllers/authentication'))
 
 
 
