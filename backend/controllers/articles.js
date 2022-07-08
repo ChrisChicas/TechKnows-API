@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
     }
     
     const article = await Article.create(req.body)
-    res.json(place)
+    res.json(article)
 })
 
 router.get('/', async (req, res) => {
@@ -23,39 +23,39 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/:articleId', async (req, res) => {
-    let articleId = Number(req.params.articleId)
-    if (isNaN(articleId)) {
-        res.status(404).json({ message: `Invalid id "${articleId}"` })
+router.get('/:article_id', async (req, res) => {
+    let article_id = Number(req.params.article_id)
+    if (isNaN(article_id)) {
+        res.status(404).json({ message: `Invalid id "${article_id}"` })
     } else {
         const article = await Article.findOne({
-            where: { articleId: articleId },
+            where: { article_id: article_id },
             include: {
                 association: 'comments',
                 include: 'author'
             }
         })
         if (!article) {
-            res.status(404).json({ message: `Could not find place with id "${articleId}"` })
+            res.status(404).json({ message: `Could not find article with id "${article_id}"` })
         } else {
             res.json(article)
         }
     }
 })
 
-router.put('/:articleId', async (req, res) => {
+router.put('/:article_id', async (req, res) => {
     if(req.currentUser?.canEditarticle()){
         return res.status(403).json({message:'You are not allowed to edit articles'})
     }
-    let articleId = Number(req.params.articleId)
-    if (isNaN(articleId)) {
-        res.status(404).json({ message: `Invalid id "${articleId}"` })
+    let article_id = Number(req.params.article_id)
+    if (isNaN(article_id)) {
+        res.status(404).json({ message: `Invalid id "${article_id}"` })
     } else {
         const article = await Article.findOne({
-            where: { articleId: articleId },
+            where: { article_id: article_id },
         })
         if (!article) {
-            res.status(404).json({ message: `Could not find place with id "${articleId}"` })
+            res.status(404).json({ message: `Could not find place with id "${article_id}"` })
         } else {
             Object.assign(article, req.body)
             await article.save()
@@ -64,21 +64,21 @@ router.put('/:articleId', async (req, res) => {
     }
 })
 
-router.delete('/:articleId', async (req, res) => {
+router.delete('/:article_id', async (req, res) => {
     if(req.currentUser?.canDeletearticle()){
         return res.status(403).json({message:'You are not allowed to delete articles'})
     }
-    let articleId = Number(req.params.placeId)
-    if (isNaN(articleId)) {
-        res.status(404).json({ message: `Invalid id "${articleId}"` })
+    let article_id = Number(req.params.article_id)
+    if (isNaN(article_id)) {
+        res.status(404).json({ message: `Invalid id "${article_id}"` })
     } else {
         const article = await Article.findOne({
             where: {
-                articleId: articleId
+                article_id: article_id
             }
         })
         if (!article) {
-            res.status(404).json({ message: `Could not find place with id "${articleId}"` })
+            res.status(404).json({ message: `Could not find article with id "${article_id}"` })
         } else {
             await article.destroy()
             res.json(article)
@@ -86,24 +86,24 @@ router.delete('/:articleId', async (req, res) => {
     }
 })
 
-router.post('/:articleId/comments', async (req, res) => {
-    const articleId = Number(req.params.articleId)
+router.post('/:article_id/comments', async (req, res) => {
+    const article_id = Number(req.params.article_id)
 
-    req.body.rant = req.body.rant ? true : false
+    req.body.comment = req.body.comment ? true : false
 
     const place = await Article.findOne({
-        where: { articleId: articleId }
+        where: { article_id: article_id }
     })
 
     if (!place) {
-        res.status(404).json({ message: `Could not find place with id "${articleId}"` })
+        res.status(404).json({ message: `Could not find article with id "${article_id}"` })
     }
     let currentUser;
     try 
     {
         currentUser = await User.findOne({
             where: {
-                userId: req.session.userId
+                user_id: req.session.user_id
             }
         })
     }
@@ -111,12 +111,12 @@ router.post('/:articleId/comments', async (req, res) => {
     {
         currentUser = null
     }
-    const author = await User.findOne({
-        where: { userId: req.body.authorId }
+    const user = await User.findOne({
+        where: { user_id: req.body.user_id }
     })
 
-    if (!author) {
-        res.status(404).json({ message: `Could not find author with id "${req.body.authorId}"` })
+    if (!user) {
+        res.status(404).json({ message: `Could not find author with id "${req.body.user_id}"` })
     }
     if(!req.currentUser) {
         return res.status(404).json({
@@ -125,33 +125,33 @@ router.post('/:articleId/comments', async (req, res) => {
     }
     const comment = await Comment.create({
         ...req.body,
-        authorId: req.currentUser.userId,
-        articleId: articleId
+        user_id: req.currentUser.user_id,
+        article_id: article_id
     })
 
     res.send({
         ...comment.toJSON(),
-        author:req.currentUser
+        user:req.currentUser
     })
 })
 
-router.delete('/:articleId/comments/:commentId', async (req, res) => {
-    let articleId = Number(req.params.articleId)
-    let commentId = Number(req.params.commentId)
+router.delete('/:article_id/comments/:comment_id', async (req, res) => {
+    let article_id = Number(req.params.article_id)
+    let comment_id = Number(req.params.comment_id)
 
     if (isNaN(placeId)) {
-        res.status(404).json({ message: `Invalid id "${articleId}"` })
-    } else if (isNaN(commentId)) {
-        res.status(404).json({ message: `Invalid id "${commentId}"` })
+        res.status(404).json({ message: `Invalid id "${article_id}"` })
+    } else if (isNaN(comment_id)) {
+        res.status(404).json({ message: `Invalid id "${comment_id}"` })
     } else {
         const comment = await Comment.findOne({
-            where: { commentId: commentId, articleId: articleId }
+            where: { comment_id: comment_id, article_id: article_id }
         })
         if (!comment) {
-            res.status(404).json({ message: `Could not find comment with id "${commentId}" for article with id "${articleId}"` })
-        } else if (comment.authorId !== req.currentUser?.userId){
+            res.status(404).json({ message: `Could not find comment with id "${comment_id}" for article with id "${article_id}"` })
+        } else if (comment.user_id !== req.currentUser?.user_id){
             res.status(403).json({
-                message: `You do not have permission to delete comment "${comment.commentId}"`
+                message: `You do not have permission to delete comment "${comment.comment_id}"`
             })
         }
         

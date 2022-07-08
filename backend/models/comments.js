@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
     
      static associate({ User, Article }) {
-      Comment.belongsTo(User, { as: 'author', foreignKey: "author_id" })
+      Comment.belongsTo(User, { as: 'author', foreignKey: 'user_id'})
       Comment.belongsTo(Article, { as:'article', foreignKey: 'article_id' })
       }
     };
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    author_id: {
+    user_id: {
       type:DataTypes.INTEGER,
       allowNull: false
     },

@@ -41,12 +41,12 @@ module.exports = {
       
         comment_id: '1',
         comment: 'Wow!',
-        author_id: users[0].user_id,
+        user_id: users[0].user_id,
         article_id: articles[0].article_id,
         
       }
     ])
-  },
+    },
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('users', null, {});

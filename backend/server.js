@@ -23,9 +23,9 @@ app.get('/', (req, res) => {
 
 
 
-//app.use('/places', require('./controllers/places'))
+app.use('/articles', require('./controllers/articles'))
 app.use('/users', require('./controllers/users'))
-//app.use('/authentication', require('./controllers/authentication'))
+app.use('/authentication', require('./controllers/authentication'))
 
 
 
