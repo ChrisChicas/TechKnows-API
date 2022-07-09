@@ -5,12 +5,14 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
     
-      static associate({ User }) {
-        // user
-        Comment.belongsTo(User, {
+      static associate({ User, Comment }) {
+        Article.belongsTo(User, {
           foreignKey: "user_id",
           as: "article"
         })
+        Article.hasMany(Comment, 
+          {foreignKey:'article_id',
+           as: 'comments'})
       }
   }
   Article.init({
