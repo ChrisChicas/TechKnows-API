@@ -8,7 +8,7 @@ const { User } = db
 router.post('/', async (req, res) => {
     
     let user = await User.findOne({
-        where: { email: req.body.email }
+        where: { username: req.body.username }
     })
 
     if (!user || !await bcrypt.compare(req.body.password, user.password)) {
