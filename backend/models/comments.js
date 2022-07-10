@@ -16,7 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-
     comment: {
       type: DataTypes.STRING,
       allowNull: false
@@ -25,9 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.INTEGER,
       allowNull: false
     },
-
-    article_id:
-    {
+    article_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     }

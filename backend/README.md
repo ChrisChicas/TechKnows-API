@@ -1,2 +1,1 @@
 # TechKnows-API
-# Server Side

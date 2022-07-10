@@ -18,7 +18,10 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-    const articles = await Article.findAll()
+    const articles = await Article.findAll({
+        order: [["article_id", "DESC"]],
+        limit: 10
+    })
     res.json(articles)   
 })
 
