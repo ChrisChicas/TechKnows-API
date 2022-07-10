@@ -10,7 +10,8 @@ router.post('/', async (req, res) => {
         role: 'user',
         password: await bcrypt.hash(password, 12)
     })
-    res.json(user)
+    req.session.user_id = user.user_id
+    res.json({user})
 })
 
 router.get('/', async (req, res) => {
