@@ -28,7 +28,7 @@ app.use(defineCurrentUser)
 
 app.get('/', (req, res) => {
     res.status(200).json({
-        message: 'Welcome to the TeckKnows API'
+        message: 'Welcome to the TechKnows API'
     })
 })
 app.use('/articles', require('./controllers/articles'))
