@@ -14,11 +14,11 @@ app.use(cookieSession({
     keys: [ process.env.SESSION_SECRET ],
     maxAge: 24* 60 * 1000 //24 hours
 }))
-/*
+
 app.use(cors({
     origin:'http://localhost:3000',
     credentials: true
-}))*/
+}))
 
 app.use(express.json())
 app.use(express.static('public'))
@@ -36,5 +36,5 @@ app.use('/users', require('./controllers/users'))
 app.use('/authentication', require('./controllers/authentication'))
 
 app.listen(process.env.PORT, () => {
-    console.log(`🎸 Rockin' on port: ${process.env.PORT}`)
+    console.log(`Listening on port: ${process.env.PORT}`)
 })
