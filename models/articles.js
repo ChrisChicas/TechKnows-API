@@ -8,11 +8,12 @@ module.exports = (sequelize, DataTypes) => {
       static associate({ User, Comment }) {
         Article.belongsTo(User, {
           foreignKey: "user_id",
-          as: "article"
+          as: "artAuthor"
         })
-        Article.hasMany(Comment, 
-          {foreignKey:'article_id',
-           as: 'comments'})
+        Article.hasMany(Comment, {
+          foreignKey:'article_id',
+          as: 'artComments'
+        })
       }
   }
   Article.init({

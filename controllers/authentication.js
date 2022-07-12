@@ -11,20 +11,20 @@ router.post('/', async (req, res) => {
     })
 
     if (!user || !await bcrypt.compare(req.body.password, user.password)) {
-        res.status(404).json({ message: `Could not find a user with the provided username and password` })
+        return res.status(404).json({ message: `Could not find a user with the provided username and password` })
     } else {
         req.session.user_id = user.user_id
-        res.json({ user })
+        return res.json(user)
     }
 })
 
 router.post("/logout", (req, res) => {
     req.session = null
-    res.json({message: "Logged out."})
+    return res.json({message: "Logged out."})
 })
 
 router.get('/profile', async (req, res) => {
-    res.json(req.currentUser)
+    return res.json(req.currentUser)
 })
 
 module.exports = router

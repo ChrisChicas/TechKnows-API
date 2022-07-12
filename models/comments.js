@@ -6,8 +6,14 @@ module.exports = (sequelize, DataTypes) => {
   class Comment extends Model {
     
      static associate({ User, Article }) {
-      Comment.belongsTo(User, { as: 'author', foreignKey: 'user_id'})
-      Comment.belongsTo(Article, { as:'article', foreignKey: 'article_id' })
+      Comment.belongsTo(User, {
+        foreignKey: 'user_id',
+        as: 'comAuthor'
+      })
+      Comment.belongsTo(Article, {
+        foreignKey: 'article_id', 
+        as:'artComments' 
+      })
       }
     };
   Comment.init({
@@ -17,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     comment: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     user_id: {
