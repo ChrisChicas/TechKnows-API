@@ -10,12 +10,12 @@ module.exports = (sequelize, DataTypes) => {
       // comment and article
       User.hasMany(Comment, {
         foreignKey: "user_id",
-        as: "Comments"
+        as: "comAuthor"
       })
      
       User.hasMany(Article, {
         foreignKey: "user_id",
-        as: "Articles"
+        as: "artAuthor"
       })
     }
   }

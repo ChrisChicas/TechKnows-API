@@ -15,16 +15,11 @@ router.post('/', async (req, res) => {
             password: await bcrypt.hash(password, 12)
         })
         req.session.user_id = newUser.user_id
-        res.json({newUser})    
+        return res.json(newUser)    
     } else {
-        res.status(400).json({message: "Username already exists!"})
+        return res.status(400).json({message: "Username already exists!"})
     }
     
-})
-
-router.get('/', async (req, res) => {
-    const users = await User.findAll()
-    res.json(users)
 })
 
 module.exports = router
