@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const db = require("../models")
 const bcrypt = require('bcrypt')
+const jwt = require('json-web-token')
 const { User } = db
 
 router.post('/', async (req, res) => {
@@ -14,8 +15,8 @@ router.post('/', async (req, res) => {
             role: 'user',
             password: await bcrypt.hash(password, 12)
         })
-        req.session.user_id = newUser.user_id
-        return res.json(newUser)    
+        const result = await jwt.encode(process.env.JWT_SECRET, {id: newUser.user_id})
+        return res.json({user: newUser, token: result.value})   
     } else {
         return res.status(400).json({message: "Username already exists!"})
     }

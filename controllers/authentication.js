@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const db = require("../models")
 const bcrypt = require('bcrypt')
+const jwt = require("json-web-token")
 
 const { User } = db
 
@@ -13,13 +14,13 @@ router.post('/', async (req, res) => {
     if (!user || !await bcrypt.compare(req.body.password, user.password)) {
         return res.status(404).json({ message: `Could not find a user with the provided username and password` })
     } else {
-        req.session.user_id = user.user_id
-        return res.json(user)
+        const result = await jwt.encode(process.env.JWT_SECRET, {id: user.user_id})
+        return res.json({user: user, token: result.value})
     }
 })
 
 router.post("/logout", (req, res) => {
-    req.session = null
+    req.currentUser = null
     return res.json({message: "Logged out."})
 })
 

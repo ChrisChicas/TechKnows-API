@@ -5,30 +5,15 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express();
 
-const cookieSession = require('cookie-session')
 const defineCurrentUser = require('./middleware/defineCurrentUser')
 
-app.use(cookieSession({
-    name: 'session',
-    keys: [ process.env.SESSION_SECRET ],
-    maxAge: 24* 60 * 1000,
-    sameSite: "strict",
-    secure: true
-}))
-
-const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com"]
-const corsOptions = {
-    origin: function (origin, callback){
-        if (whitelist.indexOf(origin) !== -1){
-            callback(null, true)
-        } else {
-            callback(new Error("Not allowed by CORS"))
-        }
-    },
+app.use(cors({
+    origin: process.env.CORS_URL,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
     credentials: true
-}
-app.use(cors(corsOptions))
-
+}))
 app.use(express.json())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
@@ -40,6 +25,7 @@ app.get('/', (req, res) => {
         message: 'Welcome to the TechKnows API'
     })
 })
+
 app.use('/articles', require('./controllers/articles'))
 app.use('/users', require('./controllers/users'))
 app.use('/authentication', require('./controllers/authentication'))
