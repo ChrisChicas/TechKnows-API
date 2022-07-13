@@ -5,17 +5,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express();
 
-const cookieSession = require('cookie-session')
 const defineCurrentUser = require('./middleware/defineCurrentUser')
-
-app.use(cookieSession({
-    name: 'session',
-    httpOnly: false,
-    sameSite: "none",
-    secure: true,
-    keys: [ process.env.SESSION_SECRET ],
-    maxAge: 24* 60 * 1000
-}))
 
 app.use(cors({
     origin: "https://techknows.herokuapp.com",
