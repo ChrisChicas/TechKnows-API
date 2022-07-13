@@ -21,6 +21,12 @@ module.exports = {
     "username": process.env.RDS_DB_USERNAME,
     "port": process.env.RDS_PORT,
     "password": process.env.RDS_DB_PASSWORD,
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }
