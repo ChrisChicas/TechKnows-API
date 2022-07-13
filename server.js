@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 
 const bodyParser = require('body-parser')
-const cors = require('cors')
+// const cors = require('cors')
 const app = express();
 
 const cookieSession = require('cookie-session')
@@ -11,23 +11,22 @@ const defineCurrentUser = require('./middleware/defineCurrentUser')
 app.use(cookieSession({
     name: 'session',
     keys: [ process.env.SESSION_SECRET ],
-    maxAge: 24* 60 * 1000,
-    secure: true
+    maxAge: 24* 60 * 1000
 }))
 
-const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "https://techknows-api.herokuapp.com"]
-const corsOptions = {
-    origin: function (origin, callback){
-        if (whitelist.indexOf(origin) !== -1){
-            callback(null, true)
-        } else {
-            callback(new Error("Not allowed by CORS"))
-        }
-    },
-    credentials: true
-}
+// const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "https://techknows-api.herokuapp.com"]
+// const corsOptions = {
+//     origin: function (origin, callback){
+//         if (whitelist.indexOf(origin) !== -1){
+//             callback(null, true)
+//         } else {
+//             callback(new Error("Not allowed by CORS"))
+//         }
+//     },
+//     credentials: true
+// }
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
