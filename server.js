@@ -15,7 +15,7 @@ app.use(cookieSession({
     secure: true
 }))
 
-const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com"]
+const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "https://techknows-api.herokuapp.com"]
 const corsOptions = {
     origin: function (origin, callback){
         if (whitelist.indexOf(origin) !== -1){
