@@ -11,7 +11,8 @@ const defineCurrentUser = require('./middleware/defineCurrentUser')
 app.use(cookieSession({
     name: 'session',
     keys: [ process.env.SESSION_SECRET ],
-    maxAge: 24* 60 * 1000
+    maxAge: 24* 60 * 1000,
+    httpOnly: false
 }))
 
 // const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "https://techknows-api.herokuapp.com"]
