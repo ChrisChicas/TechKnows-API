@@ -12,7 +12,6 @@ app.use(cookieSession({
     name: 'session',
     keys: [ process.env.SESSION_SECRET ],
     maxAge: 24* 60 * 1000,
-    sameSite: "strict",
     secure: true
 }))
 
@@ -27,8 +26,8 @@ const corsOptions = {
     },
     credentials: true
 }
-app.use(cors(corsOptions))
 
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
@@ -40,6 +39,7 @@ app.get('/', (req, res) => {
         message: 'Welcome to the TechKnows API'
     })
 })
+
 app.use('/articles', require('./controllers/articles'))
 app.use('/users', require('./controllers/users'))
 app.use('/authentication', require('./controllers/authentication'))
