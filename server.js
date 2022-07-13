@@ -17,7 +17,7 @@ app.use(cookieSession({
     secure: true
 }))
 
-var whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "https://techknows-api.herokuapp.com"]
+const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "https://techknows-api.herokuapp.com"]
 // const corsOptions = {
 //     origin: function (origin, callback){
 //         if (whitelist.indexOf(origin) !== -1 || !origin){
@@ -30,13 +30,7 @@ var whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "ht
 // }
 
 app.use(cors({
-    "origin": function (origin, callback){
-                if (whitelist.indexOf(origin) !== -1 || !origin){
-                    callback(null, true)
-                } else {
-                    callback(new Error("Not allowed by CORS"))
-                }
-            },
+    "origin": "https://techknows.herokuapp.com",
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "preflightContinue": false,
     "optionsSuccessStatus": 204,
