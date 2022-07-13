@@ -9,7 +9,7 @@ module.exports = {
       last_name: 'Hassouneh',
       username: 'admin',
       role: 'admin',
-      password: await bcrypt.hash(process.env.ADMIN_PASSWORD, 10)
+      password: await bcrypt.hash(process.env.ADMIN_PASSWORD, 12)
     }])
   },
 
