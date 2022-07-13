@@ -14,8 +14,15 @@ app.use(cookieSession({
     maxAge: 24* 60 * 1000
 }))
 
+const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com"]
 app.use(cors({
-    origin:'http://localhost:3000',
+    origin: function (origin, callback){
+        if (whitelist.indexOf(origin) !== -1){
+            callback(null, true)
+        } else {
+            callback(new Error("Not allowed by CORS"))
+        }
+    },
     credentials: true
 }))
 
