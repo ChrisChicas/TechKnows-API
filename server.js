@@ -6,9 +6,10 @@ const cors = require('cors')
 const app = express();
 
 const defineCurrentUser = require('./middleware/defineCurrentUser')
-
+// https://techknows.herokuapp.com
+// http://localhost:3000
 app.use(cors({
-    origin: "https://techknows.herokuapp.com",
+    origin: "http://localhost:3000",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     preflightContinue: false,
     optionsSuccessStatus: 204,
