@@ -10,11 +10,11 @@ const defineCurrentUser = require('./middleware/defineCurrentUser')
 
 app.use(cookieSession({
     name: 'session',
-    keys: [ process.env.SESSION_SECRET ],
-    maxAge: 24* 60 * 1000,
-    httpOnly: true,
+    httpOnly: false,
     sameSite: "none",
-    secure: true
+    secure: true,
+    keys: [ process.env.SESSION_SECRET ],
+    maxAge: 24* 60 * 1000
 }))
 
 app.use(cors({
