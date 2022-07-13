@@ -13,15 +13,15 @@ app.use(cookieSession({
     keys: [ process.env.SESSION_SECRET ],
     maxAge: 24* 60 * 1000,
     sameSite: "none",
-    secure: false
+    secure: true
 }))
 
 app.use(cors({
-    "origin": "https://techknows.herokuapp.com",
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-    "preflightContinue": false,
-    "optionsSuccessStatus": 204,
-    "credentials": true
+    origin: "https://techknows.herokuapp.com",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    credentials: true
 }))
 app.use(express.json())
 app.use(express.static('public'))
