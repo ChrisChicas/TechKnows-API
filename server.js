@@ -27,7 +27,7 @@ app.use(cookieSession({
 // }
 
 app.use(cors({
-    "origin": "*",
+    "origin": "https://techknows.herokuapp.com",
     "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
     "preflightContinue": false,
     "optionsSuccessStatus": 204
