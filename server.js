@@ -12,22 +12,9 @@ app.use(cookieSession({
     name: 'session',
     keys: [ process.env.SESSION_SECRET ],
     maxAge: 24* 60 * 1000,
-    httpOnly: false,
     sameSite: "none",
-    secure: true
+    secure: false
 }))
-
-const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "https://techknows-api.herokuapp.com"]
-// const corsOptions = {
-//     origin: function (origin, callback){
-//         if (whitelist.indexOf(origin) !== -1 || !origin){
-//             callback(null, true)
-//         } else {
-//             callback(new Error("Not allowed by CORS"))
-//         }
-//     },
-//     credentials: true
-// }
 
 app.use(cors({
     "origin": "https://techknows.herokuapp.com",
