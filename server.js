@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 
 const bodyParser = require('body-parser')
-// const cors = require('cors')
+const cors = require('cors')
 const app = express();
 
 const cookieSession = require('cookie-session')
@@ -17,7 +17,7 @@ app.use(cookieSession({
 // const whitelist = ["http://localhost:3000", "https://techknows.herokuapp.com", "https://techknows-api.herokuapp.com"]
 // const corsOptions = {
 //     origin: function (origin, callback){
-//         if (whitelist.indexOf(origin) !== -1){
+//         if (whitelist.indexOf(origin) !== -1 || !origin){
 //             callback(null, true)
 //         } else {
 //             callback(new Error("Not allowed by CORS"))
@@ -26,7 +26,12 @@ app.use(cookieSession({
 //     credentials: true
 // }
 
-// app.use(cors(corsOptions))
+app.use(cors({
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+}))
 app.use(express.json())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
