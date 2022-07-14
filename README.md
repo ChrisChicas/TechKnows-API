@@ -46,5 +46,7 @@ Finally, in separate terminals, run `npm start` in each folder so that the API a
 | /articles/:articleId       | `articles/ArticleDetails.js`    | Details of a article, including it's comments, and a form to create a new comment |
 | /articles/:articleId/edit  | `articles/Editarticle.js`       | Form for editing an article                                                       |
 
+In the project there are 3 tables as shown below
+
 
 ![image (5)](https://user-images.githubusercontent.com/92067807/178866600-0817f163-7fde-434c-b9fa-98527779ee92.png)
