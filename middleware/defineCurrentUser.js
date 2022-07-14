@@ -10,9 +10,8 @@ async function defineCurrentUser(req, res, next) {
             const result = await jwt.decode(process.env.JWT_SECRET, token)
             const { id } = result.value
             let user = await User.findOne({ 
-                where: {
-                    user_id: id
-                }
+                where: {user_id: id},
+                attributes: ["user_id"]
             })
             req.currentUser = user
         }
