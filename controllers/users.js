@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
             password: await bcrypt.hash(password, 12)
         })
         const result = await jwt.encode(process.env.JWT_SECRET, {id: newUser.user_id})
-        return res.json({user: newUser.user_id, token: result.value})   
+        return res.json({user: {user_id: newUser.user_id, username: newUser.username, role: newUser.role}, token: result.value})   
     } else {
         return res.status(400).json({message: "Username already exists!"})
     }

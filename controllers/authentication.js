@@ -9,13 +9,12 @@ const { User } = db
 router.post('/', async (req, res) => {
     let user = await User.findOne({
         where: { username: req.body.username },
-        attributes: ["user_id"]
     })
     if (!user || !await bcrypt.compare(req.body.password, user.password)) {
         return res.status(404).json({ message: `Could not find a user with the provided username and password` })
     } else {
         const result = await jwt.encode(process.env.JWT_SECRET, {id: user.user_id})
-        return res.json({user: user, token: result.value})
+        return res.json({user: {user_id: user.user_id, username: user.username, role: user.role}, token: result.value})
     }
 })
 

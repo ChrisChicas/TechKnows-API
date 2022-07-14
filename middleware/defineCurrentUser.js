@@ -11,7 +11,7 @@ async function defineCurrentUser(req, res, next) {
             const { id } = result.value
             let user = await User.findOne({ 
                 where: {user_id: id},
-                attributes: ["user_id"]
+                attributes: ["user_id", "username", "role"]
             })
             req.currentUser = user
         }
