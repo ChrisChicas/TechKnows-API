@@ -33,6 +33,11 @@ module.exports = (sequelize, DataTypes) => {
     user_id: {
       type:DataTypes.INTEGER,
       allowNull: false
+    },
+    tag: {
+      type: DataTypes.ENUM,
+      values: ['General', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python'],
+      defaultValue: "General"
     }
   }, {
     sequelize,
