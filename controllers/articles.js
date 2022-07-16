@@ -19,11 +19,51 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-    const articles = await Article.findAll({
-        order: [["article_id", "DESC"]],
-        limit: 10
-    })
-    return res.json(articles)   
+    let page = req.query.page
+    if(isNaN(page)){
+        page = 1
+    }
+    let offset = (page - 1) * 10
+    let sort = req.query.sort
+    const allowSort = ['General', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python']
+    if (allowSort.includes(sort)){
+        sort = sort
+    } else {
+        sort = "Most Recent"
+    }
+
+    let articles
+    let pages
+    let filteredArticles
+    if (sort === "Most Recent"){
+        articles = await Article.findAll()
+        pages = Math.ceil(articles.length / 10)
+        filteredArticles = await Article.findAll({
+            order: [["article_id", "DESC"]],
+            offset: offset,
+            limit: 10
+        }) 
+    } else {
+        articles = await Article.findAll({
+            where: {tag: sort}
+        })
+        pages = Math.ceil(articles.length / 10)
+        filteredArticles = await Article.findAll({
+            where: {tag: sort},
+            order: [["article_id", "DESC"]],
+            offset: offset,
+            limit: 10
+        })
+    }
+
+    if (page > pages){
+        return res.status(400).json({message: "Page does not exit."})
+    }
+
+    return res.send({
+        articles: filteredArticles,
+        pages: pages
+    })   
 })
 
 

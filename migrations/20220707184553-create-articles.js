@@ -21,6 +21,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      tag: {
+        type: Sequelize.ENUM,
+        values: ['General', 'HTML', 'CSS', 'JavaScript', 'NodeJS', 'Python'],
+        defaultValue: "General"
+      }
       
     });
   },
