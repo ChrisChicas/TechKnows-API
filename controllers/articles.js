@@ -38,6 +38,9 @@ router.get('/', async (req, res) => {
     if (sort === "Most Recent"){
         articles = await Article.findAll()
         pages = Math.ceil(articles.length / 10)
+        if (pages === 0){
+            pages = 1
+        }
         filteredArticles = await Article.findAll({
             order: [["article_id", "DESC"]],
             offset: offset,
@@ -48,6 +51,9 @@ router.get('/', async (req, res) => {
             where: {tag: sort}
         })
         pages = Math.ceil(articles.length / 10)
+        if (pages === 0){
+            pages = 1
+        }
         filteredArticles = await Article.findAll({
             where: {tag: sort},
             order: [["article_id", "DESC"]],
