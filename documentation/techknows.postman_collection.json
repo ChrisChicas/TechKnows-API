@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "8ebcb29a-f5f9-4fe4-94b4-fe9f3bc939e1",
+		"name": "techknows",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19616227"
+	},
+	"item": [
+		{
+			"name": "https://techknows-api.herokuapp.com/users Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \r\n       \"first_name\": \"Stepanie\",\r\n       \"last_name\": \"Adet\",\r\n       \"username\":\"user11\",\r\n       \"password\":\"123456789\",\r\n       \"role\":\"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \r\n       \"first_name\": \"Stepanie\",\r\n       \"last_name\": \"Adet\",\r\n       \"username\":\"user11\",\r\n       \"password\":\"123456789\",\r\n       \"role\":\"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/users",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/users Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n        \"title\": \"Test Article pt.2\",\r\n        \"content\": \"The sequel!\",\r\n        \"user_id\": 8\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/users Copy 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \r\n       \r\n       \"username\":\"user11\",\r\n       \"password\":\"123456789\"\r\n       \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/authentication",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/users Copy 3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles/2",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/users Copy 4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
