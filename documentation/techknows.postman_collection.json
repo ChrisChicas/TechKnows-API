@@ -1,28 +1,16 @@
 {
 	"info": {
-		"_postman_id": "8ebcb29a-f5f9-4fe4-94b4-fe9f3bc939e1",
+		"_postman_id": "b1646ecc-f659-42c0-a2e8-7586e2a8c09b",
 		"name": "techknows",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19616227"
 	},
 	"item": [
 		{
-			"name": "https://techknows-api.herokuapp.com/users Copy",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "https://techknows-api.herokuapp.com/",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n      \r\n       \"first_name\": \"Stepanie\",\r\n       \"last_name\": \"Adet\",\r\n       \"username\":\"user11\",\r\n       \"password\":\"123456789\",\r\n       \"role\":\"user\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "https://techknows-api.herokuapp.com/",
 					"protocol": "https",
@@ -39,111 +27,12 @@
 			"response": []
 		},
 		{
-			"name": "https://techknows-api.herokuapp.com/users",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n      \r\n       \"first_name\": \"Stepanie\",\r\n       \"last_name\": \"Adet\",\r\n       \"username\":\"user11\",\r\n       \"password\":\"123456789\",\r\n       \"role\":\"user\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://techknows-api.herokuapp.com/users",
-					"protocol": "https",
-					"host": [
-						"techknows-api",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://techknows-api.herokuapp.com/users Copy 2",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \r\n        \"title\": \"Test Article pt.2\",\r\n        \"content\": \"The sequel!\",\r\n        \"user_id\": 8\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://techknows-api.herokuapp.com/articles",
-					"protocol": "https",
-					"host": [
-						"techknows-api",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"articles"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://techknows-api.herokuapp.com/users Copy 2",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n      \r\n       \r\n       \"username\":\"user11\",\r\n       \"password\":\"123456789\"\r\n       \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://techknows-api.herokuapp.com/authentication",
-					"protocol": "https",
-					"host": [
-						"techknows-api",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"authentication"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "https://techknows-api.herokuapp.com/users Copy 3",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "https://techknows-api.herokuapp.com/articles/",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "https://techknows-api.herokuapp.com/articles/2",
+					"raw": "https://techknows-api.herokuapp.com/articles/",
 					"protocol": "https",
 					"host": [
 						"techknows-api",
@@ -152,23 +41,155 @@
 					],
 					"path": [
 						"articles",
-						"2"
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "https://techknows-api.herokuapp.com/users Copy 4",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "https://techknows-api.herokuapp.com/articles/?sort=Python&page=1",
 			"request": {
 				"method": "GET",
 				"header": [],
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles/?sort=Python&page=1",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles",
+						""
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "Python"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/articles/1/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles/1/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/authentication/",
+			"request": {
+				"method": "POST",
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"username\":\"example\",\r\n    \"password\":\"password\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/authentication/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"authentication",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/authentication/logout/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/authentication/logout/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"authentication",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/users/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Mike\",\r\n    \"last_name\": \"Smith\",\r\n    \"username\":\"Mike123\",\r\n    \"password\":\"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/users/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/articles/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"How to make an Express server\",\r\n    \"content\": \"Lorem ipsum...\",\r\n    \"tag\": \"NodeJS\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -185,6 +206,115 @@
 					],
 					"path": [
 						"articles",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/articles/1/comments/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"Cool!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles/1/comments/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles",
+						"1",
+						"comments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/articles/1/",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"How to style your website!\",\r\n    \"content\": \"Lorem ipsum...\",\r\n    \"tag\": \"CSS\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles/1/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/articles/1/",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles/1/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://techknows-api.herokuapp.com/articles/1/comments/1/",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://techknows-api.herokuapp.com/articles/1/comments/1/",
+					"protocol": "https",
+					"host": [
+						"techknows-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"articles",
+						"1",
+						"comments",
+						"1",
 						""
 					]
 				}
