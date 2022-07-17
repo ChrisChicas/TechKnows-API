@@ -48,5 +48,4 @@ Finally, in separate terminals, run `npm start` in each folder so that the API a
 
 In the project there are 3 tables as shown below
 
-
-![image (5)](https://user-images.githubusercontent.com/92067807/178866600-0817f163-7fde-434c-b9fa-98527779ee92.png)
+![Techknows (1)](https://user-images.githubusercontent.com/92067807/179403290-7d8da38f-332c-44a4-a04b-f22daa378d2a.jpg)
