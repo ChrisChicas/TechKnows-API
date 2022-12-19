@@ -3,8 +3,6 @@ TechKnows is a free tech article app where users can view articles or log in to 
 
 ## Important Links
 - TechKnows Front-End Repo: [Link](https://github.com/ChrisChicas/TechKnows)
-- Front-End Deployed on Heroku: [Link](https://techknows.herokuapp.com)
-- Back-End Deployed on Heroku: [Link](https://techknows-api.herokuapp.com)
 
 ## Development Process
 - After many suggestions and  delibrations, we came up with the vague concept of Techknows. The main purpose of our design is to enable users to read articles, and publish/edit/delete their own articles. However, if the user is interested in publishing an article, the user will need to sign up or log in to their account. This required a small amount of role-based authorization, which led to ideas of how much further we could take roles in our app, and what authors could do compared to normal users. In the end, authors can edit/delete their own content while other users, logged in or not, can only read another author's articles. We also implemented an admin role which has access to all of the author controls for any article or comment. Role-based authorization was a huge factor in our app, and something we had to keep in mind while working on both the front and back-end.
